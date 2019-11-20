@@ -10,16 +10,17 @@ module.exports = {
         }
     },
 
-    async index(req, res){
+    async list(req, res){
         try{
-            const product = await Product.find({})
+            const { page } = req.query
+            const product = await Product.paginate({}, {page: page, limit: 10})
             return res.json(product)
         } catch(err){
             res.status(500).json(err)
         }
     },
 
-    async show(req, body){
+    async show(req, res){
         try{
             const product = await Product.findById(req.params.id)
             return res.json(product)
@@ -42,6 +43,7 @@ module.exports = {
     async destroy(req, res){
         try{
             const product = await Product.findByIdAndRemove(req.params.id)
+            return res.json(product)
         } catch(err){
 
         }
