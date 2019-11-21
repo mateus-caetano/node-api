@@ -6,7 +6,7 @@ const cors = require('cors')
 const app = express()
 
 try {
-    const c = mongoose.connect("",
+    const c = mongoose.connect("mongodb+srv://mateus:ecommerce@ecommercecluster-innaq.mongodb.net/test?retryWrites=true&w=majority",
      { 
         useNewUrlParser: true,
         useUnifiedTopology: true 
