@@ -1,32 +1,16 @@
 const mongoose = require('mongoose')
-const mongoosePaginate = require('mongoose-paginate')
 
 const Schema = mongoose.Schema
 
-const Product = new Schema({
+const UserSchema = new Schema({
     nome: {
-        required: true,
-        type: String
-    },
-    price: {
-        required: true,
-        type: Number
-    },
-    size: {
-        required: true,
-        type: String
-
-    },
-    genre: {
         type: String,
         required: true
     },
-    createdAt: {
-        type: Date,
-        dafault: Date.now
+    password: {
+        type: String,
+        required: true
     }
 })
 
-Product.plugin(mongoosePaginate)
-
-module.exports = mongoose.model('Product', Product)
+module.exports = mongoose.model('user', UserSchema)
